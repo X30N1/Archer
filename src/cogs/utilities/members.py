@@ -10,7 +10,7 @@ class MembersCog(fluxer.Cog):
         super().__init__(bot)
 
     @fluxer.Cog.command(name="members")
-    async def roleall(self, ctx):
+    async def members(self, ctx):
         guild = self.bot._guilds.get(GUILD_ID)
 
         count = 0  

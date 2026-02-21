@@ -26,3 +26,9 @@ These are the intents you will use when connecting to the Fluxer API / Gateway. 
 |DIRECT_MESSAGE_REACTIONS | 1 << 13 | 8192 | 
 |DIRECT_MESSAGE_TYPING | 1 << 14 | 16384 | 
 |MESSAGE_CONTENT | 1 << 15 | 32768 | 
+
+## Symbols
+[DEBUG] -> Commands outputted from the bots debug enablable in .env<br>
+[OK] -> Indicates the bot is doing okay / has completed operation.<br>
+[FAIL] -> Failed something to do with the bot. Non-fatal, bot can continue.<br>
+[ERROR] -> Bot has done something disasterous and will shutdown to prevent further issues.

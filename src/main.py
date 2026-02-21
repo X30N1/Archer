@@ -10,13 +10,15 @@ load_dotenv()
 
 INTENTS = os.getenv("FLUXER_INTENTS")
 PREFIX = os.getenv("BOT_PREFIX")
+DEBUG = int(os.getenv("BOT_DEBUG_MODE"))
 
 bot = fluxer.Bot(command_prefix=PREFIX, intents=INTENTS)
 
 @bot.event
 async def on_ready():
+    print(f"[OK] loading cogs, please wait...")
     await load_extensions()
-    print(f"[OK] Logged in, and ready as {bot.user.username}")
+    print(f"[OK] Bot has started and logged into Fluxer as with Fluxer as: {bot.user.username}")
 
 async def load_extensions():
     for root, dirs, files in os.walk("./src/cogs"):
@@ -27,9 +29,10 @@ async def load_extensions():
                 cog = cog.removeprefix("src.")
                 try:
                     await bot.load_extension(cog)
-                    print(f"[OK] Loaded {cog}")
+                    if DEBUG == 1:
+                        print(f"[DEBUG] Loaded {cog}")
                 except Exception as e:
-                    print(f"[FAIL] Failed to load {cog}: {e}")
+                    print(f"[ERROR] Failed to load {cog}: {e}")
 
 if __name__ == "__main__":
     # !!! SECURITY WARNING!!!
