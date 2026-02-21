@@ -8,12 +8,15 @@ import os
 # Initialise .env > You bot token should be in this virtual environment.
 load_dotenv()
 
-bot = fluxer.Bot(command_prefix="$", intents=fluxer.Intents.default())
+INTENTS = os.getenv("FLUXER_INTENTS")
+PREFIX = os.getenv("BOT_PREFIX")
+
+bot = fluxer.Bot(command_prefix=PREFIX, intents=INTENTS)
 
 @bot.event
 async def on_ready():
     await load_extensions()
-    print(f"Logged in, and ready as {bot.user.username}")
+    print(f"[OK] Logged in, and ready as {bot.user.username}")
 
 async def load_extensions():
     for root, dirs, files in os.walk("./src/cogs"):
@@ -24,9 +27,9 @@ async def load_extensions():
                 cog = cog.removeprefix("src.")
                 try:
                     await bot.load_extension(cog)
-                    print(f"[*] Loaded {cog}")
+                    print(f"[OK] Loaded {cog}")
                 except Exception as e:
-                    print(f"[X] Failed to load {cog}: {e}")
+                    print(f"[FAIL] Failed to load {cog}: {e}")
 
 if __name__ == "__main__":
     # !!! SECURITY WARNING!!!

@@ -1,1 +1,8 @@
+# !! DO NOT REMOVE THIS UNDER ANY CIRCUMSTANCES !!
+# !! OR YOU WILL PUSH YOUR TOKEN (BAD!) !!
 .env
+
+__pycache__/
+*.py[cod]
+*$py.class
+/venv
