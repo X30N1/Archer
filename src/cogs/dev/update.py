@@ -68,22 +68,28 @@ class UpdateCog(fluxer.Cog):
 
             # Reloading cogs, for post update.
             print("[OK] Updated successfully copied cogs. Beginning reload.")
-            for root, dirs, files in os.walk("./src/cogs"):  
-                for filename in files:  
-                    if filename.endswith(".py") and not filename.startswith("_"):  
-                        path = os.path.join(root, filename)  
-                        cog = path.lstrip("./").replace(os.sep, ".")[:-3]  
-                        cog = cog.removeprefix("src.")  
-                        cog_name = cog.split(".")[-1].capitalize() + "Cog"
+            for root, dirs, files in os.walk("./src/cogs"):
+                for filename in files:
+                    if filename.endswith(".py") and not filename.startswith("_"):
+                        path = os.path.join(root, filename)
+                        cog = path.lstrip("./").replace(os.sep, ".")[:-3]
+                        cog = cog.removeprefix("src.")
 
-                        if cog_name in self.bot.cogs:
-                            await self.bot.remove_cog(cog_name)
-                        await self.bot.unload_extension(cog)
-                        await self.bot.load_extension(cog)
-                    
-            await ctx.reply(embed=updateSuccessEmbed)
+                        # Actually begin reloading the cog.
+                        try:
+                            if cog in self.bot.extensions:
+                                await self.bot.reload_extension(cog)
+                                print(f"[OK] Reloaded {cog}")
+                            else:
+                                await self.bot.load_extension(cog)
+                                print(f"[OK] Loaded {cog}")
+                        except Exception as e:
+                            print(f"[ERROR] Failed to reload {cog}: {e}")
+                                
         except Exception as e:  
             print(f"[ERROR] Failed to update, please see logs.")
+
+        await ctx.reply(embed=updateSuccessEmbed)
 
 async def setup(bot):
     await bot.add_cog(UpdateCog(bot))
