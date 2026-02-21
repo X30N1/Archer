@@ -8,7 +8,7 @@ ROLE_ID = int(os.getenv("AUTOROLE_ID"))
 COG_ENABLED = int(os.getenv("AUTOROLECOG_DISABLE"))
 DEBUG = int(os.getenv("BOT_DEBUG_MODE"))
 
-class AutoRoleCog(fluxer.Cog):
+class AutoroleCog(fluxer.Cog):
     def __init__(self, bot):
         super().__init__(bot)
 
@@ -30,4 +30,4 @@ class AutoRoleCog(fluxer.Cog):
                 print(f"[DEBUG] Added role '{ROLE_ID}' to {user_id} in {GUILD_ID}")
 
 async def setup(bot):
-    await bot.add_cog(AutoRoleCog(bot))
+    await bot.add_cog(AutoroleCog(bot))
