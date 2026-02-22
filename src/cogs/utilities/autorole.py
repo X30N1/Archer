@@ -14,7 +14,7 @@ class AutoroleCog(fluxer.Cog):
 
     @fluxer.Cog.listener()
     async def on_member_join(self, data):
-        if COG_ENABLED == 1:
+        if COG_ENABLED == 0:
             if DEBUG == 1:
                 print(f"[DEBUG] Member has joined {GUILD_ID}, attempting to grant {ROLE_ID}")
 
