@@ -1,37 +1,87 @@
 # Archer
-Archer is a free, open-source and selfhostable Fluxer utility bot with the goal of being minimal, yet effective.
 
-## Current Features and roadmap
-Archer currently has moderation utilities, and basic role utilities such as roleall, and autorole on join. In the future, I intend on adding some more features like Reaction Roles, and the likes. For more information, feel free to DM me at https://fluxer.gg/arch
+Archer is a free, open-source, and self-hostable utility bot for [Fluxer](https://fluxer.gg). It's built to be minimal and effective — no bloat, just the tools you need.
 
-## Setting up the bot
-This bot currently has scripts to make it run on *UNIX systems (macOS, Linux, FreeBSD) so long as you have the dependencies installed.<br>
-You should first run install.sh, and then copy the .env.example to simply .env whilst also modifying it to your needs - the .env.example explains what each value does.<br>
-Finally, launch it with launch.sh, simple as!
+> Have questions or feedback? DM me on Fluxer: [arch](https://fluxer.gg/arch)
 
-## BitWise Intents
-These are the intents you will use when connecting to the Fluxer API / Gateway. You modify these in your .env file, as explained how to setup earlier.
-| Intent | Bit Expression | Value |
-|--------|----------------|-------|
-|GUILDS | 1 << 0 | 1 | 
-|GUILD_MEMBERS | 1 << 1 | 2 | 
-|GUILD_MODERATION | 1 << 2 | 4 | 
-|GUILD_EMOJIS_AND_STICKERS | 1 << 3 | 8 | 
-|GUILD_INTEGRATIONS | 1 << 4 | 16 | 
-|GUILD_WEBHOOKS | 1 << 5 | 32 | 
-|GUILD_INVITES | 1 << 6 | 64 | 
-|GUILD_VOICE_STATES	| 1 << 7 | 128 | 
-|GUILD_PRESENCES | 1 << 8 | 256 | 
-|GUILD_MESSAGES  | 1 << 9 | 512 | 
-|GUILD_MESSAGE_REACTIONS | 1 << 10 | 1024 | 
-|GUILD_MESSAGE_TYPING | 1 << 11 | 2048 | 
-|DIRECT_MESSAGES | 1 << 12 | 4096 | 
-|DIRECT_MESSAGE_REACTIONS | 1 << 13 | 8192 | 
-|DIRECT_MESSAGE_TYPING | 1 << 14 | 16384 | 
-|MESSAGE_CONTENT | 1 << 15 | 32768 | 
+---
 
-## Symbols
-[DEBUG] -> Commands outputted from the bots debug enablable in .env<br>
-[OK] -> Indicates the bot is doing okay / has completed operation.<br>
-[FAIL] -> Failed something to do with the bot. Non-fatal, bot can continue.<br>
-[ERROR] -> Bot has done something disasterous and will shutdown to prevent further issues.
+## Features
+
+- **Moderation utilities** — keep your server in order
+- **Role utilities** — includes `roleall` and autorole on member join
+- **Coming soon** — Reaction Roles and more
+
+---
+
+## Getting Started
+
+Archer currently supports **Unix-based systems** (macOS, Linux, FreeBSD). Make sure you have the required dependencies installed before proceeding.
+
+### 1. Install dependencies
+
+```bash
+./install.sh
+```
+
+### 2. Configure your environment
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` and fill in your values — the example file documents what each variable does.
+
+### 3. Launch
+
+```bash
+./launch.sh
+```
+
+And off ya do, you may want to use a screen. I plan on dockerizing this in the future.
+
+---
+
+## Gateway Intents
+
+When connecting to the Fluxer API/Gateway, you'll need to specify your intents as a bitfield. Set this value in your `.env` file.
+
+To calculate your intent value, add up the values for each intent you want to enable.
+
+| Intent | Bit | Value |
+|--------|-----|-------|
+| GUILDS | 1 << 0 | 1 |
+| GUILD_MEMBERS | 1 << 1 | 2 |
+| GUILD_MODERATION | 1 << 2 | 4 |
+| GUILD_EMOJIS_AND_STICKERS | 1 << 3 | 8 |
+| GUILD_INTEGRATIONS | 1 << 4 | 16 |
+| GUILD_WEBHOOKS | 1 << 5 | 32 |
+| GUILD_INVITES | 1 << 6 | 64 |
+| GUILD_VOICE_STATES | 1 << 7 | 128 |
+| GUILD_PRESENCES | 1 << 8 | 256 |
+| GUILD_MESSAGES | 1 << 9 | 512 |
+| GUILD_MESSAGE_REACTIONS | 1 << 10 | 1024 |
+| GUILD_MESSAGE_TYPING | 1 << 11 | 2048 |
+| DIRECT_MESSAGES | 1 << 12 | 4096 |
+| DIRECT_MESSAGE_REACTIONS | 1 << 13 | 8192 |
+| DIRECT_MESSAGE_TYPING | 1 << 14 | 16384 |
+| MESSAGE_CONTENT | 1 << 15 | 32768 |
+
+---
+
+## Log Symbols
+
+Archer uses the following prefixes in its console output:
+
+| Symbol | Meaning |
+|--------|---------|
+| `[DEBUG]` | Verbose debug output (can be enabled in `.env`) |
+| `[OK]` | Operation completed successfully |
+| `[FAIL]` | Non-fatal error — the bot will continue running |
+| `[ERROR]` | Fatal error — the bot will shut down to prevent further issues |
+
+---
+
+## License
+
+This project is open-source. See [LICENSE](./LICENSE) for details.
