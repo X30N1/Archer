@@ -9,6 +9,7 @@ import asyncio
 REPO_URL= os.getenv("REPO_URL")
 TEMP_DIR= Path("/tmp/archer")
 LOCAL_COGS_DIR = Path("./src/cogs")
+ADMIN_ID = int(os.getenv("ADMIN_ID"))  
 
 class UpdateCog(fluxer.Cog):
     def __init__(self, bot):
@@ -16,6 +17,14 @@ class UpdateCog(fluxer.Cog):
 
     @fluxer.Cog.command()
     async def update(self, ctx):
+        author_id = getattr(ctx.author, 'user', ctx.author).id  
+
+        if author_id != ADMIN_ID:
+            await ctx.reply("Oops! You do not have permission to use that command.")
+            print("[WARNING] Someone tried to update the bot!")
+            return
+        
+
         # Fancy! Embeds, makes it look all good.
         startingUpdateEmbed = Embed(
             title = "Starting update",

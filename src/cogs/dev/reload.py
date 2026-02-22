@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 # Global values gathered from .env, do not modify.
 GUILD_ID = int(os.getenv("GUILD_ID"))
 DEBUG = int(os.getenv("BOT_DEBUG_MODE"))
+ADMIN_ID = int(os.getenv("ADMIN_ID"))  
 
 class ReloadCog(fluxer.Cog):
     def __init__(self, bot):
@@ -12,6 +13,13 @@ class ReloadCog(fluxer.Cog):
 
     @fluxer.Cog.command()  
     async def reload(self, ctx):  
+        author_id = getattr(ctx.author, 'user', ctx.author).id  
+
+        if author_id != ADMIN_ID:
+            await ctx.reply("Oops! You do not have permission to use that command.")
+            print("[WARNING] Someone tried to reload the bot!")
+            return
+
         for root, dirs, files in os.walk("./src/cogs"):  
             for filename in files:  
                 if filename.endswith(".py") and not filename.startswith("_"):  

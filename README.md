@@ -1,6 +1,9 @@
 # Archer
 Archer is a free, open-source and selfhostable Fluxer utility bot with the goal of being minimal, yet effective.
 
+## Current Features and roadmap
+Archer currently has moderation utilities, and basic role utilities such as roleall, and autorole on join. In the future, I intend on adding some more features like Reaction Roles, and the likes. For more information, feel free to DM me at https://fluxer.gg/arch
+
 ## Setting up the bot
 This bot currently has scripts to make it run on *UNIX systems (macOS, Linux, FreeBSD) so long as you have the dependencies installed.<br>
 You should first run install.sh, and then copy the .env.example to simply .env whilst also modifying it to your needs - the .env.example explains what each value does.<br>

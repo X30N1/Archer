@@ -7,9 +7,10 @@ from datetime import datetime, timedelta
 # Global values gathered from .env, do not modify.
 GUILD_ID = int(os.getenv("GUILD_ID"))
 DEBUG = int(os.getenv("BOT_DEBUG_MODE"))
+MOD_ROLE = int(os.getenv("MOD_ROLE"))
 
+# TIme parsing, for date & time in timeout, max 14d.
 def parse_duration(duration: str) -> datetime:  
-    """Parse strings like '14d', '1h', '30m' into a future datetime (max 14 days)."""  
     unit = duration[-1].lower()  
     value = int(duration[:-1])  
     if unit == "d":  
@@ -34,6 +35,16 @@ class TimeoutCog(fluxer.Cog):
 
         if not guild:
             return await ctx.reply("This command hasn't been run in a guild, how are you using this bot?")
+        
+        # Permission gating, only mods can use this command.
+        author_id = getattr(ctx.author, "user", ctx.author).id  
+        guild = await self.bot.fetch_guild(ctx.guild_id)  
+
+        member = await guild.fetch_member(author_id)  
+        if not member or not member.has_role(MOD_ROLE):  
+            await ctx.reply("Oops! You do not have permission to use that command.")  
+            print("[WARNING] Someone without the mod role tried to use the timeout command!")  
+            return  
         
         member = await guild.fetch_member(member_id)  
         until_iso = parse_duration(time).isoformat() + "Z"  
