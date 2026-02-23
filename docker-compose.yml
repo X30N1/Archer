@@ -34,14 +34,15 @@ services:
       AUTOROLECOG_DISABLE: 0
 
     # TODO once permanent storage comes into play,
+    # https://docs.docker.com/engine/storage/bind-mounts/
     # binds volume inside the docker container to a external
     # bare metal volume.
-    # FORMAT: /path_inside_container:/path_on_host_machine
+    # FORMAT: /path_on_host:/path_inside_container
     # volumes:
     # Alternatively pass in just a volume name, and docker will
     # create it's own managed volume. This is harder to accidentally
     # delete, but it'll make editing the file harder
-    #  - /data:/app/archer_data
+    #  - src/data:/app/archer_data
 
     # see root secrets below.
     secrets:
