@@ -28,6 +28,8 @@ And finally, to start your bot use
 If you do not want to use sudo you can also add your user to the docker group and run
 ```docker-compose up --build```
 
+Any changes will require you to use the above rebuild command, if you haven't made a change, but want to start your bot again - simply omit the --build part of the command.
+
 Enjoy!
 
 ---
