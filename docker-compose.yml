@@ -21,7 +21,7 @@ services:
       # Or extending it, I recommend not touching these if you don't know what you are doing though!
       #Use bitwise intents or else the bot will not be able to talk with Fluxer properly.
       # You can find an appropriate calculation in the README.md
-      FLUXER_INTENTS: "INSERT THE INTENTS CODE HERE"
+      FLUXER_INTENTS: "33281"
       # Default bot prefix used for calling the bot for example in "$ping".
       # This should be safe to modify, if anything breaks though, make a GitHub issue.
       BOT_PREFIX: "$"
