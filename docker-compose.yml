@@ -4,7 +4,7 @@ services:
     build: .
     working_dir: /app
     restart: unless-stopped
-    enviroment:
+    environment:
       # Set this to true if you want to configure using the docker-compose deployment method
       DOCKER_DEPLOY: false
       # Set the bot to debug mode or disable it
