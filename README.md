@@ -24,7 +24,7 @@ First, install docker and docker-compose with your package manager of choice, eg
 Then, you'll want to edit your .env.example and save it as .env (Remove the .example!) with a text editor of choice (VSCode, Nano, NVim, etc.)
 
 And finally, to start your bot use
-```sudo docker-compose up --build```
+```sudo docker-compose up --build```<br>
 If you do not want to use sudo you can also add your user to the docker group and run
 ```docker-compose up --build```
 
