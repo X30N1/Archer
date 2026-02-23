@@ -1,2 +1,1 @@
-BOT TOKEN FOR DOCKER COMPOSE:
 Replace this text with the bot token. No quotes, just the raw token.
