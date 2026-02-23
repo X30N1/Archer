@@ -1,0 +1,9 @@
+# docker-compose.yml
+services:
+  archer:
+    build: .
+    working_dir: /app
+    env_file:
+      - .env
+    restart: unless-stopped
+

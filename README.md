@@ -18,27 +18,17 @@ Archer is a free, open-source, and self-hostable utility bot for [Fluxer](https:
 
 Archer currently supports **Unix-based systems** (macOS, Linux, FreeBSD). Make sure you have the required dependencies installed before proceeding.
 
-### 1. Install dependencies
+First, install docker and docker-compose with your package manager of choice, eg.:
+`pacman -S docker docker-compose`
 
-```bash
-./install.sh
-```
+Then, you'll want to edit your .env.example and save it as .env (Remove the .example!) with a text editor of choice (VSCode, Nano, NVim, etc.)
 
-### 2. Configure your environment
+And finally, to start your bot use
+`sudo docker-compose up --build`
+If you do not want to use sudo you can also add your user to the docker group and run
+`docker-compose up --build`
 
-```bash
-cp .env.example .env
-```
-
-Open `.env` and fill in your values — the example file documents what each variable does.
-
-### 3. Launch
-
-```bash
-./launch.sh
-```
-
-And off ya do, you may want to use a screen. I plan on dockerizing this in the future.
+Enjoy!
 
 ---
 

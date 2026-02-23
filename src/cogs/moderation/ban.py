@@ -35,10 +35,10 @@ class BanCog(fluxer.Cog):
             color=0x65b7e6  
         )  
     
-        await ctx.reply(embed=bannedEmbed)  
-    
+        await ctx.reply(embed=bannedEmbed)
+
         if DEBUG == 1:  
-            print(f"[DEBUG] Kick command operated on {member_id}")
+            print(f"[DEBUG] Ban command operated on {member_id}")
         
 async def setup(bot):
     await bot.add_cog(BanCog(bot))

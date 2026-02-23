@@ -8,7 +8,6 @@ GUILD_ID = int(os.getenv("GUILD_ID"))
 DEBUG = int(os.getenv("BOT_DEBUG_MODE"))
 MOD_ROLE = int(os.getenv("MOD_ROLE"))
 
-
 class KickCog(fluxer.Cog):
     def __init__(self, bot):
         super().__init__(bot)
@@ -38,7 +37,7 @@ class KickCog(fluxer.Cog):
             color=0x65b7e6
         )
 
-        await ctx.reply(embed=kickedEmbed)
+        await ctx.reply(embed=kickedEmbed)  
 
         if DEBUG == 1:
             print(f"[DEBUG] Kick command operated on {member_id}")
