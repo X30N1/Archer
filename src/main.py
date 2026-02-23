@@ -44,7 +44,7 @@ if __name__ == "__main__":
     if not os.getenv('DOCKER_DEPLOY'):
         TOKEN = os.getenv('FLUXER_BOT_TOKEN')
     else:
-        with open("/run/secrets/bot_token") as f:
+        with open("/run/secrets/FLUXER_BOT_TOKEN") as f:
             TOKEN = f.read().strip()
 
     bot.run(TOKEN)
